@@ -66,6 +66,6 @@ var filename = process.argv[2];
 var outputFilename = process.argv[3] || filename.slice(0, filename.lastIndexOf('.')) + '.js';
 var snipetList = JSON.parse(fs.readFileSync(filename, 'utf-8'));
 run(snipetList, function(script) {
-  console.log(script);
   fs.writeFileSync(outputFilename, script);
+  console.log('create snipet' , filename, '=>', outputFilename);
 });
