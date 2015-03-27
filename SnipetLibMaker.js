@@ -3,7 +3,7 @@ var fs = require('fs');
 
 var run = function(snipetList, callback) {
   var exec = require('child_process').exec;
-  var loadData = function(url, callback) {
+  var download = function(url, callback) {
     exec('curl ' + url, function(err, stdout, stderr) {
       if (!err) {
         callback(stdout);
@@ -18,7 +18,7 @@ var run = function(snipetList, callback) {
     if(index < snipetList.length) {
       var snipet = snipetList[index];
       index++;
-      loadData(snipet.url, function(data){
+      download(snipet.url, function(data){
         snipet.data = data;
         loop();
       });
